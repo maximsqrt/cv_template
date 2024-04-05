@@ -70,6 +70,6 @@ final personalData = PersonalData(
     city: "Berlin",
     zip: "12043",
   ),
-  martialStatus: MartialStatus.single,
+  maritalStatus: MaritalStatus.single,
   nationality: Nationality.german,
 );

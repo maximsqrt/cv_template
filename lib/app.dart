@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
 class App extends StatelessWidget {
-  final HighlighterTheme theme;
   const App({super.key, required this.theme});
+  final HighlighterTheme theme;
 
   @override
   Widget build(BuildContext context) {

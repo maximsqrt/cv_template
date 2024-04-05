@@ -5,16 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({super.key, required this.theme});
+
   static const routeName = '/MainScreen';
   final HighlighterTheme theme;
-  const MainScreen({super.key, required this.theme});
+
   @override
   Widget build(BuildContext context) {
-    var highlighter = Highlighter(
+    final highlighter = Highlighter(
       language: 'dart',
       theme: theme,
     );
-    var highlightedCode = highlighter.highlight(personalData.toString());
+    final highlightedCode = highlighter.highlight(personalData.toString());
+
     return Scaffold(
       backgroundColor: Colors.grey[900],
       body: SingleChildScrollView(
@@ -45,15 +48,16 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               Flexible(
-                  flex: 4,
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        PersonalDataCodeView(highlightedCode: highlightedCode),
-                      ],
-                    ),
-                  )),
+                flex: 4,
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      PersonalDataCodeView(highlightedCode: highlightedCode),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

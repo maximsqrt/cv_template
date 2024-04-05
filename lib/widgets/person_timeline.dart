@@ -7,9 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:timelines/timelines.dart';
 
 class PersonTimeLine extends StatelessWidget {
-  const PersonTimeLine({
-    super.key,
-  });
+  const PersonTimeLine({super.key});
 
   @override
   Widget build(BuildContext context) {

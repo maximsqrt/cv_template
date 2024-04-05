@@ -1,27 +1,20 @@
-enum MartialStatus { single, married, divorced, widowed }
+enum MaritalStatus { single, married, divorced, widowed }
 
 enum Nationality { german }
 
 class Address {
-  final String street;
-  final String city;
-  final String zip;
   Address({
     required this.street,
     required this.city,
     required this.zip,
   });
+
+  final String street;
+  final String city;
+  final String zip;
 }
 
 class PersonalData {
-  final String first;
-  final String last;
-  final String email;
-  final String phone;
-  final DateTime dateOfBirth;
-  final Address address;
-  final MartialStatus martialStatus;
-  final Nationality nationality;
   const PersonalData({
     required this.first,
     required this.last,
@@ -29,9 +22,18 @@ class PersonalData {
     required this.phone,
     required this.dateOfBirth,
     required this.address,
-    required this.martialStatus,
+    required this.maritalStatus,
     required this.nationality,
   });
+
+  final String first;
+  final String last;
+  final String email;
+  final String phone;
+  final DateTime dateOfBirth;
+  final Address address;
+  final MaritalStatus maritalStatus;
+  final Nationality nationality;
 
   @override
   String toString() {
@@ -47,7 +49,7 @@ class PersonalData {
         city: "${address.city}",
         zip: "${address.zip}",
       ),
-      martialStatus: MartialStatus.${martialStatus.name},
+      maritalSTatus: MaritalStatus.${maritalStatus.name},
       nationality: Nationality.${nationality.name},
     );
 """;
