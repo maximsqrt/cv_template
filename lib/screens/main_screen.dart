@@ -29,19 +29,21 @@ class MainScreen extends StatelessWidget {
                 flex: 2,
                 child: Container(
                   color: Colors.grey[600],
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          radius: 80,
-                          backgroundImage: Image.network(
-                            'https://i.imgur.com/08zdbVy.png',
-                          ).image,
+                        SizedBox(height: 48),
+                        Center(
+                          child: CircleAvatar(
+                            radius: 80,
+                            backgroundImage: AssetImage(
+                                'assets/images/profile_picture.jpeg'),
+                          ),
                         ),
-                        const SizedBox(height: 20),
-                        const PersonTimeLine()
+                        SizedBox(height: 32),
+                        PersonTimeLine()
                       ],
                     ),
                   ),
