@@ -12,6 +12,11 @@ class Address {
   final String street;
   final String city;
   final String zip;
+
+  @override
+  String toString() {
+    return "$street, $city, $zip";
+  }
 }
 
 class PersonalData {
@@ -49,7 +54,7 @@ class PersonalData {
         city: "${address.city}",
         zip: "${address.zip}",
       ),
-      maritalSTatus: MaritalStatus.${maritalStatus.name},
+      maritalStatus: MaritalStatus.${maritalStatus.name},
       nationality: Nationality.${nationality.name},
     );
 """;

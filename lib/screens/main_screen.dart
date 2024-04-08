@@ -1,6 +1,10 @@
 import 'package:cv_template/config/config.dart';
 import 'package:cv_template/widgets/person_timeline.dart';
+import 'package:cv_template/widgets/personal_address.dart';
 import 'package:cv_template/widgets/personal_data_view.dart';
+import 'package:cv_template/widgets/personal_name_header.dart';
+import 'package:cv_template/widgets/personal_profile.dart';
+import 'package:cv_template/widgets/personal_work_experience.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -25,12 +29,6 @@ class MainScreen extends StatelessWidget {
     final highlightedCode = highlighter.highlight(personalData.toString());
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _offerCVasPdf();
-        },
-        child: const Icon(Icons.picture_as_pdf_sharp),
-      ),
       backgroundColor: Colors.grey[900],
       body: Screenshot(
         controller: screenshotController,
@@ -38,6 +36,7 @@ class MainScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Flexible(
                   flex: 2,
@@ -57,7 +56,7 @@ class MainScreen extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 32),
-                          PersonTimeLine()
+                          PersonalTimeLine()
                         ],
                       ),
                     ),
@@ -65,19 +64,31 @@ class MainScreen extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 4,
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        PersonalDataCodeView(highlightedCode: highlightedCode),
-                      ],
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const PersonalNameHeader(),
+                      const SizedBox(height: 16),
+                      const PersonalAddress(),
+                      const SizedBox(height: 32),
+                      const PersonalProfile(),
+                      const SizedBox(height: 8),
+                      const PersonalWorkExperience(),
+                      const SizedBox(height: 8),
+                      PersonalDataCodeView(highlightedCode: highlightedCode),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _offerCVasPdf();
+        },
+        child: const Icon(Icons.picture_as_pdf_sharp),
       ),
     );
   }
