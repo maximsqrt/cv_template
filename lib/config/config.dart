@@ -26,6 +26,7 @@ final edus = [
     university: "University of Berlin",
   ),
 ];
+
 final languages = [
   const LanguageEntry(
     name: "English",
@@ -46,22 +47,22 @@ final languages = [
 
 final skills = [
   const SkillEntry(
-    name: "Dart",
+    name: "Flart",
     rating: 5,
   ),
   const SkillEntry(
-    name: "Flutter",
+    name: "Putter",
     rating: 5,
   ),
   const SkillEntry(
-    name: "Python",
+    name: "Dython",
     rating: 3,
   ),
 ];
 
 final personalData = PersonalData(
-  first: "David",
-  last: "Sent",
+  firstName: "David",
+  lastName: "Sent",
   email: "sentd94@gmail.com",
   phone: "+49 1575 911 9123",
   dateOfBirth: DateTime(1994, 12, 25),

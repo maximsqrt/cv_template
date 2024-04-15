@@ -1,3 +1,4 @@
+import 'package:cv_template/config/config.dart';
 import 'package:flutter/material.dart';
 
 class PersonalNameHeader extends StatelessWidget {
@@ -5,9 +6,9 @@ class PersonalNameHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      "This is NAME HEADER",
-      style: TextStyle(
+    return Text(
+      "${personalData.firstName} ${personalData.lastName}",
+      style: const TextStyle(
         fontSize: 42,
       ),
     );

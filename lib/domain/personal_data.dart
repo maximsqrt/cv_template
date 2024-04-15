@@ -21,8 +21,8 @@ class Address {
 
 class PersonalData {
   const PersonalData({
-    required this.first,
-    required this.last,
+    required this.firstName,
+    required this.lastName,
     required this.email,
     required this.phone,
     required this.dateOfBirth,
@@ -31,8 +31,8 @@ class PersonalData {
     required this.nationality,
   });
 
-  final String first;
-  final String last;
+  final String firstName;
+  final String lastName;
   final String email;
   final String phone;
   final DateTime dateOfBirth;
@@ -44,8 +44,8 @@ class PersonalData {
   String toString() {
     return """
     PersonalData(
-      first: "$first",
-      last: "$last",
+      first: "$firstName",
+      last: "$lastName",
       email: "$email",
       phone: "$phone",
       dateOfBirth: DateTime(${dateOfBirth.year}, ${dateOfBirth.month}, ${dateOfBirth.day}),

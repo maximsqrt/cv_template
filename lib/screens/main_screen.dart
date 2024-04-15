@@ -28,67 +28,35 @@ class MainScreen extends StatelessWidget {
     );
     final highlightedCode = highlighter.highlight(personalData.toString());
 
-    return Scaffold(
-      backgroundColor: Colors.grey[900],
-      body: Screenshot(
-        controller: screenshotController,
-        child: SingleChildScrollView(
+    return Screenshot(
+      controller: screenshotController,
+      child: Scaffold(
+        backgroundColor: Colors.grey[900],
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Flexible(
+                const Flexible(
                   flex: 2,
-                  child: Container(
-                    color: Colors.grey[600],
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 48),
-                          Center(
-                            child: CircleAvatar(
-                              radius: 80,
-                              backgroundImage: AssetImage(
-                                  'assets/images/profile_picture.jpeg'),
-                            ),
-                          ),
-                          SizedBox(height: 32),
-                          PersonalTimeLine()
-                        ],
-                      ),
-                    ),
-                  ),
+                  child: PersonalSkillsSidebar(),
                 ),
                 Flexible(
                   flex: 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const PersonalNameHeader(),
-                      const SizedBox(height: 16),
-                      const PersonalAddress(),
-                      const SizedBox(height: 32),
-                      const PersonalProfile(),
-                      const SizedBox(height: 8),
-                      const PersonalWorkExperience(),
-                      const SizedBox(height: 8),
-                      PersonalDataCodeView(highlightedCode: highlightedCode),
-                    ],
-                  ),
+                  child: PersonalInformationMainScreen(
+                      highlightedCode: highlightedCode),
                 ),
               ],
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _offerCVasPdf();
-        },
-        child: const Icon(Icons.picture_as_pdf_sharp),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _offerCVasPdf();
+          },
+          child: const Icon(Icons.picture_as_pdf_sharp),
+        ),
       ),
     );
   }
@@ -122,5 +90,66 @@ class MainScreen extends StatelessWidget {
       ..setAttribute("download", "cv_template.pdf")
       ..click();
     html.Url.revokeObjectUrl(url);
+  }
+}
+
+class PersonalInformationMainScreen extends StatelessWidget {
+  const PersonalInformationMainScreen({
+    super.key,
+    required this.highlightedCode,
+  });
+
+  final TextSpan highlightedCode;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[900],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const PersonalNameHeader(),
+          const SizedBox(height: 16),
+          const PersonalAddress(),
+          const SizedBox(height: 32),
+          const PersonalProfile(),
+          const SizedBox(height: 8),
+          const PersonalWorkExperience(),
+          const SizedBox(height: 8),
+          PersonalDataCodeView(highlightedCode: highlightedCode),
+        ],
+      ),
+    );
+  }
+}
+
+class PersonalSkillsSidebar extends StatelessWidget {
+  const PersonalSkillsSidebar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[600],
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 48),
+            Center(
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage:
+                    AssetImage('assets/images/profile_picture.jpeg'),
+              ),
+            ),
+            SizedBox(height: 32),
+            PersonalTimeLine()
+          ],
+        ),
+      ),
+    );
   }
 }
