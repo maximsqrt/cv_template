@@ -14,6 +14,7 @@ class PersonalTimeLine extends StatelessWidget {
     return FixedTimeline.tileBuilder(
       theme: TimelineTheme.of(context).copyWith(
         nodePosition: 0.1,
+
         // indicatorPosition: 0,
       ),
       builder: TimelineTileBuilder.connected(
@@ -22,9 +23,7 @@ class PersonalTimeLine extends StatelessWidget {
           return buildIndicator(context, entry);
         },
         connectorBuilder: (_, index, type) {
-          return SolidLineConnector(
-            color: Theme.of(context).colorScheme.primary,
-          );
+          return const SolidLineConnector(color: Colors.white);
         },
         contentsAlign: ContentsAlign.basic,
         contentsBuilder: (context, index) {
@@ -42,26 +41,39 @@ class PersonalTimeLine extends StatelessWidget {
 
 Widget buildEntry(BuildContext context, dynamic entry) {
   switch (entry.runtimeType) {
-    case const (EducationEntry):
+    case (EducationEntry _):
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
               '${(entry as EducationEntry).fromDate.year} - ${(entry).toDate.year}'),
           Text(entry.degree,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
-          Text(entry.university, style: const TextStyle(fontSize: 12)),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+          Text(
+            entry.university,
+            style: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
         ],
       );
     case const (SkillEntry):
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('${entry.name}'),
+          Text(
+            '${entry.name}',
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
           SliderTheme(
             data: SliderThemeData(
-              // overlayShape: SliderComponentShape.noOverlay,
-              trackShape: CustomTrackShape(),
+              overlayShape: SliderComponentShape.noThumb,
+              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 0),
+              trackHeight: 6,
+              activeTrackColor: Theme.of(context).colorScheme.primaryContainer,
             ),
             child: Slider(
               value: entry.rating.toDouble(),
@@ -77,13 +89,18 @@ Widget buildEntry(BuildContext context, dynamic entry) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('${entry.name} | ${entry.skillLevel}'),
+          Text(
+            '${entry.name} | ${entry.skillLevel}',
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 8),
           SliderTheme(
             data: SliderThemeData(
               overlayShape: SliderComponentShape.noThumb,
               thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 0),
               trackHeight: 6,
+              overlayColor: Theme.of(context).colorScheme.primaryContainer,
+              activeTrackColor: Theme.of(context).colorScheme.primaryContainer,
             ),
             child: Slider(
               value: entry.rating.toDouble(),
@@ -98,7 +115,12 @@ Widget buildEntry(BuildContext context, dynamic entry) {
 
     case const (String):
     default:
-      return Text(entry, style: Theme.of(context).textTheme.headlineMedium);
+      return Text(
+        entry,
+        style: TextStyle(
+          fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+        ),
+      );
   }
 }
 
@@ -111,9 +133,9 @@ ContainerIndicator buildIndicator(
       size: 48,
       child: Center(
         child: FaIcon(
+          color: Theme.of(context).colorScheme.primaryContainer,
           size: 36,
           _getIconFromString(entry as String),
-          color: Theme.of(context).colorScheme.primary,
         ),
       ),
     );
@@ -122,9 +144,9 @@ ContainerIndicator buildIndicator(
         size: 48,
         child: Center(
           child: Icon(
+            color: Theme.of(context).colorScheme.primaryContainer,
             size: 14,
             Icons.circle,
-            color: Theme.of(context).colorScheme.primary,
           ),
         ));
   }

@@ -31,10 +31,9 @@ class MainScreen extends StatelessWidget {
     return Screenshot(
       controller: screenshotController,
       child: Scaffold(
-        backgroundColor: Colors.grey[900],
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(0.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -103,22 +102,19 @@ class PersonalInformationMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[900],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const PersonalNameHeader(),
-          const SizedBox(height: 16),
-          const PersonalAddress(),
-          const SizedBox(height: 32),
-          const PersonalProfile(),
-          const SizedBox(height: 8),
-          const PersonalWorkExperience(),
-          const SizedBox(height: 8),
-          PersonalDataCodeView(highlightedCode: highlightedCode),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const PersonalNameHeader(),
+        const SizedBox(height: 16),
+        const PersonalAddress(),
+        const SizedBox(height: 32),
+        const PersonalProfile(),
+        const SizedBox(height: 8),
+        const PersonalWorkExperience(),
+        const SizedBox(height: 8),
+        PersonalDataCodeView(highlightedCode: highlightedCode),
+      ],
     );
   }
 }
@@ -130,14 +126,13 @@ class PersonalSkillsSidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[600],
-      child: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 48),
+            SizedBox(height: 40),
             Center(
               child: CircleAvatar(
                 radius: 80,
@@ -145,11 +140,12 @@ class PersonalSkillsSidebar extends StatelessWidget {
                     AssetImage('assets/images/profile_picture.jpeg'),
               ),
             ),
-            SizedBox(height: 32),
-            PersonalTimeLine()
+            SizedBox(height: 40),
           ],
         ),
-      ),
+        SizedBox(height: 32),
+        PersonalTimeLine()
+      ],
     );
   }
 }
