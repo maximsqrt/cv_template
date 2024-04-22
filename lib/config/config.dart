@@ -93,7 +93,7 @@ final work = [
 ];
 
 final personalData = PersonalData(
-  firstName: "David",
+  firstName: "Jan",
   lastName: "Sent",
   email: "sentd94@gmail.com",
   phone: "+49 1575 911 9123",

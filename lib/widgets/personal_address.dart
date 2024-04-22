@@ -8,56 +8,56 @@ class PersonalAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Flexible(
-          flex: 1,
-          child: Container(
-            width: 15,
-            height: 90,
-            color: Theme.of(context).colorScheme.primaryContainer,
-          ),
+        Container(
+          width: 15,
+          height: 90,
+          color: Theme.of(context).colorScheme.primaryContainer,
         ),
         const SizedBox(width: 12),
-        Flexible(
-          flex: 10,
-          child: Column(children: [
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                const Icon(Icons.smartphone),
-                const SizedBox(width: 10),
-                Text(personalData.phone.toString()),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                const Icon(Icons.mail),
-                const SizedBox(width: 10),
-                Text(personalData.email.toString()),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                const Icon(Icons.house),
-                const SizedBox(width: 10),
-                Text(personalData.address.toString())
-              ],
-            ),
-            const SizedBox(height: 10),
-          ]),
-        ),
-        const SizedBox(width: 12),
-        /*Flexible(
-          flex: 1,
-          child: Container(
-            width: 15,
-            height: 90,
-            color: Theme.of(context).colorScheme.primaryContainer,
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              const Icon(Icons.smartphone),
+              const SizedBox(width: 10),
+              SelectionArea(
+                child: Text(
+                  personalData.phone.toString(),
+                  selectionColor: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            ],
           ),
-        ),*/
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              const Icon(Icons.mail),
+              const SizedBox(width: 10),
+              SelectionArea(
+                child: Text(
+                  personalData.email.toString(),
+                  selectionColor: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              const Icon(Icons.house),
+              const SizedBox(width: 10),
+              SelectionArea(
+                child: Text(
+                  personalData.address.toString(),
+                  selectionColor: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+        ]),
       ],
     );
   }

@@ -6,10 +6,13 @@ class PersonalNameHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "${personalData.firstName} ${personalData.lastName}",
-      style: const TextStyle(
-        fontSize: 42,
+    return SelectionArea(
+      child: Text(
+        selectionColor: Theme.of(context).colorScheme.secondary,
+        "${personalData.firstName} ${personalData.lastName}",
+        style: const TextStyle(
+          fontSize: 32,
+        ),
       ),
     );
   }

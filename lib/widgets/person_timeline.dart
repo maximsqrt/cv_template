@@ -45,16 +45,27 @@ Widget buildEntry(BuildContext context, dynamic entry) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-              '${(entry as EducationEntry).fromDate.year} - ${(entry).toDate.year}'),
-          Text(entry.degree,
+          SelectionArea(
+            child: Text(
+                selectionColor: Theme.of(context).colorScheme.secondary,
+                '${(entry as EducationEntry).fromDate.year} - ${(entry).toDate.year}'),
+          ),
+          SelectionArea(
+            child: Text(
+              entry.degree,
+              selectionColor: Theme.of(context).colorScheme.secondary,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-              )),
-          Text(
-            entry.university,
-            style: const TextStyle(
-              fontSize: 12,
+              ),
+            ),
+          ),
+          SelectionArea(
+            child: Text(
+              entry.university,
+              selectionColor: Theme.of(context).colorScheme.secondary,
+              style: const TextStyle(
+                fontSize: 12,
+              ),
             ),
           ),
         ],
@@ -63,9 +74,12 @@ Widget buildEntry(BuildContext context, dynamic entry) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '${entry.name}',
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          SelectionArea(
+            child: Text(
+              '${entry.name}',
+              selectionColor: Theme.of(context).colorScheme.secondary,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           const SizedBox(height: 8),
           SliderTheme(
@@ -89,9 +103,12 @@ Widget buildEntry(BuildContext context, dynamic entry) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '${entry.name} | ${entry.skillLevel}',
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          SelectionArea(
+            child: Text(
+              selectionColor: Theme.of(context).colorScheme.secondary,
+              '${entry.name} | ${entry.skillLevel}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           const SizedBox(height: 8),
           SliderTheme(
@@ -115,10 +132,13 @@ Widget buildEntry(BuildContext context, dynamic entry) {
 
     case const (String):
     default:
-      return Text(
-        entry,
-        style: TextStyle(
-          fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+      return SelectionArea(
+        child: Text(
+          entry,
+          selectionColor: Theme.of(context).colorScheme.secondary,
+          style: TextStyle(
+            fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+          ),
         ),
       );
   }

@@ -1,10 +1,10 @@
 import 'package:cv_template/config/config.dart';
+import 'package:cv_template/widgets/main_timeline.dart';
 import 'package:cv_template/widgets/person_timeline.dart';
 import 'package:cv_template/widgets/personal_address.dart';
 import 'package:cv_template/widgets/personal_data_view.dart';
 import 'package:cv_template/widgets/personal_name_header.dart';
-import 'package:cv_template/widgets/personal_profile.dart';
-import 'package:cv_template/widgets/personal_work_experience.dart';
+
 import 'package:cv_template/widgets/profile_description.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
@@ -43,7 +43,7 @@ class MainScreen extends StatelessWidget {
                   child: PersonalSkillsSidebar(),
                 ),
                 Flexible(
-                  flex: 4,
+                  flex: 6,
                   child: PersonalInformationMainScreen(
                       highlightedCode: highlightedCode),
                 ),
@@ -102,20 +102,22 @@ class PersonalInformationMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(height: 16),
-        PersonalNameHeader(),
-        SizedBox(height: 16),
-        PersonalAddress(),
-        SizedBox(height: 32),
-        ProfileDescription(),
-        SizedBox(height: 32),
-        PersonalWorkExperience(),
-        SizedBox(height: 8),
-        //PersonalDataCodeView(highlightedCode: highlightedCode),
-      ],
+    return const Padding(
+      padding: EdgeInsets.only(left: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 16),
+          PersonalNameHeader(),
+          SizedBox(height: 16),
+          PersonalAddress(),
+          SizedBox(height: 32),
+          ProfileDescription(),
+          SizedBox(height: 32),
+          MainTimeLine(),
+          SizedBox(height: 8),
+        ],
+      ),
     );
   }
 }

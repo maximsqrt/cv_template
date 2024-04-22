@@ -7,14 +7,17 @@ class ProfileDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       color: Theme.of(context).colorScheme.primaryContainer,
-      child: Text(
-        personalData.profileDescription,
-        style: TextStyle(
-          fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
-          fontWeight: FontWeight.w900,
-          color: Theme.of(context).colorScheme.primary,
+      child: SelectionArea(
+        child: Text(
+          selectionColor: Theme.of(context).colorScheme.secondary,
+          personalData.profileDescription,
+          style: TextStyle(
+            fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+            fontWeight: FontWeight.w900,
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
       ),
     );

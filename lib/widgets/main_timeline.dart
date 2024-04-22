@@ -1,7 +1,4 @@
 import 'package:cv_template/config/config.dart';
-import 'package:cv_template/domain/education_entry.dart';
-import 'package:cv_template/domain/language_entry.dart';
-import 'package:cv_template/domain/skill_entry.dart';
 import 'package:cv_template/domain/work_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,9 +11,7 @@ class MainTimeLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return FixedTimeline.tileBuilder(
       theme: TimelineTheme.of(context).copyWith(
-        nodePosition: 0.1,
-
-        // indicatorPosition: 0,
+        nodePosition: 0,
       ),
       builder: TimelineTileBuilder.connected(
         indicatorBuilder: (context, index) {
@@ -46,61 +41,47 @@ Widget buildEntry(BuildContext context, dynamic entry) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '${(entry as WorkEntry).fromDate.year} - ${(entry).toDate.year}',
-            style: const TextStyle(fontSize: 22),
+          SelectionArea(
+            child: Text(
+              selectionColor: Theme.of(context).colorScheme.secondary,
+              '${(entry as WorkEntry).fromDate.year} - ${(entry).toDate.year}',
+              style: const TextStyle(fontSize: 22),
+            ),
           ),
-          Text(entry.company,
+          SelectionArea(
+            child: Text(entry.company,
+                selectionColor: Theme.of(context).colorScheme.secondary,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
+          SelectionArea(
+            child: Text(
+              selectionColor: Theme.of(context).colorScheme.secondary,
+              entry.jobTitle,
               style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              )),
-          Text(
-            entry.jobTitle,
-            style: const TextStyle(
-              fontSize: 18,
+                fontSize: 18,
+              ),
             ),
           ),
-          Text(
-            entry.description,
-            style: const TextStyle(fontSize: 16),
-          )
-        ],
-      );
-/*
-    case const ():
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '${entry.name} | ${entry.skillLevel}',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          SliderTheme(
-            data: SliderThemeData(
-              overlayShape: SliderComponentShape.noThumb,
-              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 0),
-              trackHeight: 6,
-              overlayColor: Theme.of(context).colorScheme.primaryContainer,
-              activeTrackColor: Theme.of(context).colorScheme.primaryContainer,
-            ),
-            child: Slider(
-              value: entry.rating.toDouble(),
-              min: 0,
-              max: 5,
-              label: entry.rating.toString(),
-              onChanged: (double value) {},
+          SelectionArea(
+            child: Text(
+              selectionColor: Theme.of(context).colorScheme.secondary,
+              entry.description,
+              style: const TextStyle(fontSize: 16),
             ),
           ),
         ],
       );
-*/
+
     case const (String):
     default:
-      return Text(
-        entry,
-        style: TextStyle(
-          fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+      return SelectionArea(
+        child: Text(
+          entry,
+          style: TextStyle(
+            fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+          ),
         ),
       );
   }
