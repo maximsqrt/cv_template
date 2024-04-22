@@ -27,6 +27,7 @@ class PersonalData {
     required this.phone,
     required this.dateOfBirth,
     required this.address,
+    required this.profileDescription,
     required this.maritalStatus,
     required this.nationality,
   });
@@ -37,6 +38,7 @@ class PersonalData {
   final String phone;
   final DateTime dateOfBirth;
   final Address address;
+  final String profileDescription;
   final MaritalStatus maritalStatus;
   final Nationality nationality;
 
@@ -54,6 +56,7 @@ class PersonalData {
         city: "${address.city}",
         zip: "${address.zip}",
       ),
+      profileDescription: "$profileDescription"
       maritalStatus: MaritalStatus.${maritalStatus.name},
       nationality: Nationality.${nationality.name},
     );

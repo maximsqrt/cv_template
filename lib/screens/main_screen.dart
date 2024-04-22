@@ -5,6 +5,7 @@ import 'package:cv_template/widgets/personal_data_view.dart';
 import 'package:cv_template/widgets/personal_name_header.dart';
 import 'package:cv_template/widgets/personal_profile.dart';
 import 'package:cv_template/widgets/personal_work_experience.dart';
+import 'package:cv_template/widgets/profile_description.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -73,7 +74,6 @@ class MainScreen extends StatelessWidget {
           return pw.Expanded(
             child: pw.Image(
               pw.MemoryImage(screenshot!),
-              //PdfImage.file(pdfDocument.document, bytes: screenshot),
               fit: pw.BoxFit.contain,
             ),
           );
@@ -102,18 +102,19 @@ class PersonalInformationMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const PersonalNameHeader(),
-        const SizedBox(height: 16),
-        const PersonalAddress(),
-        const SizedBox(height: 32),
-        const PersonalProfile(),
-        const SizedBox(height: 8),
-        const PersonalWorkExperience(),
-        const SizedBox(height: 8),
-        PersonalDataCodeView(highlightedCode: highlightedCode),
+        SizedBox(height: 16),
+        PersonalNameHeader(),
+        SizedBox(height: 16),
+        PersonalAddress(),
+        SizedBox(height: 32),
+        ProfileDescription(),
+        SizedBox(height: 32),
+        PersonalWorkExperience(),
+        SizedBox(height: 8),
+        //PersonalDataCodeView(highlightedCode: highlightedCode),
       ],
     );
   }

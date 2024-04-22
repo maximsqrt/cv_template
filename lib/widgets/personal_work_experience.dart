@@ -1,3 +1,4 @@
+import 'package:cv_template/widgets/main_timeline.dart';
 import 'package:flutter/material.dart';
 
 class PersonalWorkExperience extends StatelessWidget {
@@ -6,13 +7,7 @@ class PersonalWorkExperience extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [
-        Text("Work Experience 1"),
-        Text("Work Experience 2"),
-        Text("Work Experience 3"),
-        Text("Work Experience 4"),
-        Text("Work Experience 5"),
-      ],
+      children: [MainTimeLine()],
     );
   }
 }

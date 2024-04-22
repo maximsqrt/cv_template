@@ -2,12 +2,13 @@ import 'package:cv_template/config/config.dart';
 import 'package:cv_template/domain/education_entry.dart';
 import 'package:cv_template/domain/language_entry.dart';
 import 'package:cv_template/domain/skill_entry.dart';
+import 'package:cv_template/domain/work_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:timelines/timelines.dart';
 
-class PersonalTimeLine extends StatelessWidget {
-  const PersonalTimeLine({super.key});
+class MainTimeLine extends StatelessWidget {
+  const MainTimeLine({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class PersonalTimeLine extends StatelessWidget {
       ),
       builder: TimelineTileBuilder.connected(
         indicatorBuilder: (context, index) {
-          final entry = personEntries[index];
+          final entry = workEntries[index];
           return buildIndicator(context, entry);
         },
         connectorBuilder: (_, index, type) {
@@ -27,13 +28,13 @@ class PersonalTimeLine extends StatelessWidget {
         },
         contentsAlign: ContentsAlign.basic,
         contentsBuilder: (context, index) {
-          final entry = personEntries[index];
+          final entry = workEntries[index];
           return Padding(
             padding: const EdgeInsets.all(24.0),
             child: buildEntry(context, entry),
           );
         },
-        itemCount: personEntries.length,
+        itemCount: workEntries.length,
       ),
     );
   }
@@ -41,51 +42,32 @@ class PersonalTimeLine extends StatelessWidget {
 
 Widget buildEntry(BuildContext context, dynamic entry) {
   switch (entry.runtimeType) {
-    case (const (EducationEntry)):
+    case (WorkEntry):
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-              '${(entry as EducationEntry).fromDate.year} - ${(entry).toDate.year}'),
-          Text(entry.degree,
+            '${(entry as WorkEntry).fromDate.year} - ${(entry).toDate.year}',
+            style: const TextStyle(fontSize: 22),
+          ),
+          Text(entry.company,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               )),
           Text(
-            entry.university,
+            entry.jobTitle,
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 18,
             ),
           ),
-        ],
-      );
-    case const (SkillEntry):
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
           Text(
-            '${entry.name}',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          SliderTheme(
-            data: SliderThemeData(
-              overlayShape: SliderComponentShape.noThumb,
-              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 0),
-              trackHeight: 6,
-              activeTrackColor: Theme.of(context).colorScheme.primaryContainer,
-            ),
-            child: Slider(
-              value: entry.rating.toDouble(),
-              min: 0,
-              max: 5,
-              label: entry.rating.toString(),
-              onChanged: (double value) {},
-            ),
-          ),
+            entry.description,
+            style: const TextStyle(fontSize: 16),
+          )
         ],
       );
-    case const (LanguageEntry):
+/*
+    case const ():
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -112,7 +94,7 @@ Widget buildEntry(BuildContext context, dynamic entry) {
           ),
         ],
       );
-
+*/
     case const (String):
     default:
       return Text(
@@ -130,22 +112,22 @@ ContainerIndicator buildIndicator(
 ) {
   if (entry.runtimeType == String) {
     return ContainerIndicator(
-      size: 48,
+      size: 64,
       child: Center(
         child: FaIcon(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          size: 36,
+          color: Theme.of(context).colorScheme.secondary,
+          size: 48,
           _getIconFromString(entry as String),
         ),
       ),
     );
   } else {
     return ContainerIndicator(
-        size: 48,
+        size: 64,
         child: Center(
           child: Icon(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            size: 14,
+            color: Theme.of(context).colorScheme.secondary,
+            size: 18,
             Icons.circle,
           ),
         ));
@@ -154,12 +136,8 @@ ContainerIndicator buildIndicator(
 
 IconData _getIconFromString(String category) {
   switch (category) {
-    case 'Education':
-      return FontAwesomeIcons.graduationCap;
-    case 'Languages':
-      return FontAwesomeIcons.language;
-    case 'Skills':
-      return FontAwesomeIcons.code;
+    case 'Work Experience':
+      return FontAwesomeIcons.helmetSafety;
     default:
       return Icons.error;
   }

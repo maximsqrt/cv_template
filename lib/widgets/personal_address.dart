@@ -50,14 +50,14 @@ class PersonalAddress extends StatelessWidget {
           ]),
         ),
         const SizedBox(width: 12),
-        Flexible(
+        /*Flexible(
           flex: 1,
           child: Container(
             width: 15,
             height: 90,
             color: Theme.of(context).colorScheme.primaryContainer,
           ),
-        ),
+        ),*/
       ],
     );
   }
