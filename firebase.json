@@ -1,1 +1,21 @@
-{"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"cvtem-787f5","configurations":{"web":"1:592602147320:web:9be0342f4ab65367558e0d"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "cvtem-787f5",
+          "configurations": {
+            "web": "1:592602147320:web:9be0342f4ab65367558e0d"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "source": ".",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "frameworksBackend": {
+      "region": "europe-west1"
+    }
+  }
+}
