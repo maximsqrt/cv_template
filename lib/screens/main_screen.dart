@@ -1,14 +1,15 @@
-import 'package:cv_template/config/config.dart';
 import 'package:cv_template/widgets/main_timeline.dart';
 import 'package:cv_template/widgets/person_timeline.dart';
 import 'package:cv_template/widgets/personal_address.dart';
-import 'package:cv_template/widgets/personal_data_view.dart';
+
 import 'package:cv_template/widgets/personal_name_header.dart';
 
 import 'package:cv_template/widgets/profile_description.dart';
+
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+
 import 'package:screenshot/screenshot.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 import 'package:universal_html/html.dart' as html;
@@ -23,33 +24,42 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final highlighter = Highlighter(
-      language: 'dart',
-      theme: theme,
-    );
-    final highlightedCode = highlighter.highlight(personalData.toString());
-
     return Screenshot(
       controller: screenshotController,
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Flexible(
-                  flex: 2,
-                  child: PersonalSkillsSidebar(),
-                ),
-                Flexible(
-                  flex: 6,
-                  child: PersonalInformationMainScreen(
-                      highlightedCode: highlightedCode),
-                ),
-              ],
-            ),
-          ),
+              padding: const EdgeInsets.all(0.0),
+              child: LayoutBuilder(builder: (context, constraints) {
+                if (constraints.maxWidth > 700) {
+                  return const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: PersonalSkillsSidebar(),
+                      ),
+                      Flexible(
+                        flex: 6,
+                        child: PersonalInformationMainScreen(
+                          isConstrained: false,
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return const Column(
+                    children: [
+                      SizedBox(height: 16),
+                      PersonalNameHeader(),
+                      PersonalSkillsSidebar(),
+                      PersonalInformationMainScreen(
+                        isConstrained: true,
+                      ),
+                    ],
+                  );
+                }
+              })),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -95,27 +105,29 @@ class MainScreen extends StatelessWidget {
 class PersonalInformationMainScreen extends StatelessWidget {
   const PersonalInformationMainScreen({
     super.key,
-    required this.highlightedCode,
+    required this.isConstrained,
   });
 
-  final TextSpan highlightedCode;
+  final bool isConstrained;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 20),
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 16),
-          PersonalNameHeader(),
-          SizedBox(height: 16),
-          PersonalAddress(),
-          SizedBox(height: 32),
-          ProfileDescription(),
-          SizedBox(height: 32),
-          MainTimeLine(),
-          SizedBox(height: 8),
+          if (!isConstrained) ...[
+            const SizedBox(height: 16),
+            const PersonalNameHeader(),
+          ],
+          const SizedBox(height: 16),
+          const PersonalAddress(),
+          const SizedBox(height: 32),
+          const ProfileDescription(),
+          const SizedBox(height: 32),
+          const MainTimeLine(),
+          const SizedBox(height: 8),
         ],
       ),
     );
@@ -129,26 +141,29 @@ class PersonalSkillsSidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 40),
-            Center(
-              child: CircleAvatar(
-                radius: 80,
-                backgroundImage:
-                    AssetImage('assets/images/profile_picture.jpeg'),
+    return const Padding(
+      padding: EdgeInsets.only(left: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 40),
+              Center(
+                child: CircleAvatar(
+                  radius: 80,
+                  backgroundImage:
+                      AssetImage('assets/images/profile_picture.jpeg'),
+                ),
               ),
-            ),
-            SizedBox(height: 40),
-          ],
-        ),
-        SizedBox(height: 32),
-        PersonalTimeLine()
-      ],
+              SizedBox(height: 40),
+            ],
+          ),
+          SizedBox(height: 32),
+          PersonalTimeLine()
+        ],
+      ),
     );
   }
 }

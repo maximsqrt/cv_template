@@ -37,7 +37,7 @@ class MainTimeLine extends StatelessWidget {
 
 Widget buildEntry(BuildContext context, dynamic entry) {
   switch (entry.runtimeType) {
-    case (WorkEntry):
+    case (const (WorkEntry)):
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

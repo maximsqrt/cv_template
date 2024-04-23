@@ -13,9 +13,7 @@ class PersonalTimeLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return FixedTimeline.tileBuilder(
       theme: TimelineTheme.of(context).copyWith(
-        nodePosition: 0.1,
-
-        // indicatorPosition: 0,
+        nodePosition: 0,
       ),
       builder: TimelineTileBuilder.connected(
         indicatorBuilder: (context, index) {
@@ -132,12 +130,15 @@ Widget buildEntry(BuildContext context, dynamic entry) {
 
     case const (String):
     default:
-      return SelectionArea(
-        child: Text(
-          entry,
-          selectionColor: Theme.of(context).colorScheme.secondary,
-          style: TextStyle(
-            fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+      return FittedBox(
+        fit: BoxFit.contain,
+        child: SelectionArea(
+          child: Text(
+            entry,
+            selectionColor: Theme.of(context).colorScheme.secondary,
+            style: TextStyle(
+              fontSize: Theme.of(context).textTheme.headlineMedium!.fontSize,
+            ),
           ),
         ),
       );
