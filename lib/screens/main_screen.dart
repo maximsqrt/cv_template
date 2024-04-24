@@ -1,3 +1,5 @@
+import 'package:cv_template/screens/data_law_screen.dart';
+import 'package:cv_template/screens/impressum_screen.dart';
 import 'package:cv_template/widgets/main_timeline.dart';
 import 'package:cv_template/widgets/person_timeline.dart';
 import 'package:cv_template/widgets/personal_address.dart';
@@ -71,8 +73,8 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  // Roughly taken from https://stackoverflow.com/a/74265509
-  // WIP :)
+// Roughly taken from https://stackoverflow.com/a/74265509
+// WIP :)
   void _offerCVasPdf() async {
     final screenshot = await screenshotController.capture();
 
@@ -127,7 +129,8 @@ class PersonalInformationMainScreen extends StatelessWidget {
           const ProfileDescription(),
           const SizedBox(height: 32),
           const MainTimeLine(),
-          const SizedBox(height: 8),
+          const SizedBox(height: 32),
+          const Footer(),
         ],
       ),
     );
@@ -162,6 +165,44 @@ class PersonalSkillsSidebar extends StatelessWidget {
           ),
           SizedBox(height: 32),
           PersonalTimeLine()
+        ],
+      ),
+    );
+  }
+}
+
+class Footer extends StatelessWidget {
+  const Footer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ImpressumScreen())),
+            child: Text(
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  fontWeight: FontWeight.bold),
+              "Impressum",
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const DataLawScreen())),
+            child: Text(
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  fontWeight: FontWeight.bold),
+              "Datenschutzerklärung",
+            ),
+          ),
         ],
       ),
     );

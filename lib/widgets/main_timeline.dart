@@ -1,5 +1,6 @@
 import 'package:cv_template/config/config.dart';
 import 'package:cv_template/domain/work_entry.dart';
+import 'package:cv_template/screens/impressum_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:timelines/timelines.dart';
