@@ -104,7 +104,7 @@ final personalData = PersonalData(
     zip: "12043",
   ),
   profileDescription:
-      "A versatile and dedicated professional with a diverse range of experience in logistics, app development education, and space tourism consultancy. ",
+      "A versatile and dedicated professional with a diverse range of experience in logistics, app development education and app development. ",
   maritalStatus: MaritalStatus.single,
   nationality: Nationality.german,
 );
