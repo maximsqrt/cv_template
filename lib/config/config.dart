@@ -19,18 +19,19 @@ final List<dynamic> workEntries = [
 ];
 
 final edus = [
-  EducationEntry(
-    fromDate: DateTime(2014, 9),
-    toDate: DateTime(2018, 7),
-    degree: "Bachelor of Science Mathmatics",
-    university: "Albert-Ludwigs-University Freiburg",
-  ),
-  EducationEntry(
-    fromDate: DateTime(2018, 9),
-    toDate: DateTime(2020, 7),
-    degree: "Master of Science",
-    university: "University of Berlin",
-  ),
+EducationEntry(
+  fromDate: DateTime(2014, 9),
+  toDate: DateTime(2018, 7),
+  degree: "Bachelor of Science in Mathematics",
+  university: "Albert-Ludwigs-University Freiburg",
+),
+EducationEntry(
+  fromDate: DateTime(2019, 4),
+  toDate: DateTime(2021, 9),
+  degree: "Master of Science in Mathematics (finished before completion)",
+  university: "Albert-Ludwigs-University Freiburg",
+)
+
   // EducationEntry(
   //   fromDate: DateTime(2018, 9),
   //   toDate: DateTime(2020, 7),
@@ -98,11 +99,49 @@ final work = [
         "My role involved delivering tailored instruction and reinforcing course materials to enhance student understanding and performance in Stochastics",
   ),
   WorkEntry(
-    fromDate: DateTime(2018,3),
+    fromDate: DateTime(2018,4),
     toDate: DateTime(2018, 9),
     jobTitle: "Tutor: Stochastics and Statisics 2",
     company: "Albert-Ludwigs-University Freiburg",
     description: "My role involved delivering tailored instruction and reinforcing course materials to enhance student understanding and performance in Stochastics",
+  ),
+  WorkEntry(
+    fromDate: DateTime(2019, 10),
+    toDate: DateTime(2020, 3),
+    jobTitle: "Tutor: Mathematics for Students of Computer Science and Engineering",
+    company: "Albert-Ludwigs-University Freiburg",
+    description:
+        "My role involved delivering tailored instruction and reinforcing course materials to enhance student understanding and performance in Stochastics",
+  ),
+  WorkEntry(
+    fromDate: DateTime(2020,4),
+    toDate: DateTime(2020, 9),
+    jobTitle: "Tutor: Stochastics for Computer Science Students",
+    company: "Albert-Ludwigs-University Freiburg",
+    description: "My role involved delivering tailored instruction and reinforcing course materials to enhance student understanding and performance in Stochastics",
+  ),
+ 
+  WorkEntry(
+    fromDate: DateTime(2020, 10),
+    toDate: DateTime(2021, 3),
+    jobTitle: "Application Developer",
+    company: "Loy & Hutz",
+    description:
+        "Developed CAFM module using the C#-based language Waveware, designed web module app for project management for both web and FAT client",
+  ),
+  WorkEntry(
+    fromDate: DateTime(2021,11),
+    toDate: DateTime(2022, 3),
+    jobTitle: "IT-Consultant",
+    company: "AS Bueropartner",
+    description: "Providing IT consulting for a web client's ERP software and assisting mid-sized company executives in database management.",
+  ),
+  WorkEntry(
+    fromDate: DateTime(2023,8),
+    toDate: DateTime(2024, 8),
+    jobTitle: "Trainee",
+    company: "App-Akademie",
+    description: "I independently led the development of a cross-platform mobile application for both iOS and Android using Flutter and Dart.",
   ),
 
   ];
