@@ -22,8 +22,8 @@ final edus = [
   EducationEntry(
     fromDate: DateTime(2014, 9),
     toDate: DateTime(2018, 7),
-    degree: "Bachelor of Science",
-    university: "University of Berlin",
+    degree: "Bachelor of Science Mathmatics",
+    university: "Albert-Ludwigs-University Freiburg",
   ),
   EducationEntry(
     fromDate: DateTime(2018, 9),
@@ -31,19 +31,19 @@ final edus = [
     degree: "Master of Science",
     university: "University of Berlin",
   ),
-  EducationEntry(
-    fromDate: DateTime(2018, 9),
-    toDate: DateTime(2020, 7),
-    degree: "PhD",
-    university: "University of Berlin",
-  ),
+  // EducationEntry(
+  //   fromDate: DateTime(2018, 9),
+  //   toDate: DateTime(2020, 7),
+  //   degree: "PhD",
+  //   university: "University of Berlin",
+  // ),
 ];
 
 final languages = [
   const LanguageEntry(
     name: "English",
-    skillLevel: "C2",
-    rating: 5,
+    skillLevel: "C1",
+    rating: 4,
   ),
   const LanguageEntry(
     name: "German",
@@ -51,65 +51,75 @@ final languages = [
     rating: 5,
   ),
   const LanguageEntry(
-    name: "Spanish",
-    skillLevel: "B2",
-    rating: 4,
+    name: "French",
+    skillLevel: "B1",
+    rating: 3,
   ),
 ];
 
 final skills = [
   const SkillEntry(
-    name: "Flart",
-    rating: 5,
+    name: "Flutter",
+    rating: 4,
   ),
   const SkillEntry(
-    name: "Putter",
-    rating: 5,
+    name: "Dart",
+    rating: 4,
   ),
   const SkillEntry(
-    name: "Dython",
-    rating: 3,
+    name: "Stochastics",
+    rating: 5,
+  ),
+    const SkillEntry(
+    name: "C",
+    rating: 1,
+  ),
+      const SkillEntry(
+    name: "Python",
+    rating: 2,
+  ),
+      const SkillEntry(
+    name: "FL Studio",
+    rating: 5,
+  ),
+      const SkillEntry(
+    name: "R",
+    rating: 2,
   ),
 ];
 
 final work = [
   WorkEntry(
-    fromDate: DateTime(2014, 9),
-    toDate: DateTime(2018, 7),
-    jobTitle: "Software Engineer",
-    company: "IBM",
+    fromDate: DateTime(2017, 10),
+    toDate: DateTime(2018, 3),
+    jobTitle: "Tutor: Stochastics and Statisics 1",
+    company: "Albert-Ludwigs-University Freiburg",
     description:
-        "Pioneered the development of the company's first-ever space tourism packages, including lunar landings, Martian treks, and zero-gravity experiences.",
+        "My role involved delivering tailored instruction and reinforcing course materials to enhance student understanding and performance in Stochastics",
   ),
   WorkEntry(
-    fromDate: DateTime(2010, 9),
-    toDate: DateTime(2014, 7),
-    jobTitle: "Working Student",
-    company: "App Akademie",
-    description: "perated a variety of delivery vehicles, including vans.",
+    fromDate: DateTime(2018,3),
+    toDate: DateTime(2018, 9),
+    jobTitle: "Tutor: Stochastics and Statisics 2",
+    company: "Albert-Ludwigs-University Freiburg",
+    description: "My role involved delivering tailored instruction and reinforcing course materials to enhance student understanding and performance in Stochastics",
   ),
-  WorkEntry(
-      fromDate: DateTime(2005, 2),
-      toDate: DateTime(2007, 9),
-      jobTitle: "Logistic Driver",
-      company: "DHL",
-      description:
-          "Operated a variety of delivery vehicles, including vans, trucks, and motorcycles, to deliver packages to customers in a timely and efficient manner.")
-];
+
+  ];
 
 final personalData = PersonalData(
-  firstName: "Jan",
-  lastName: "Sent",
-  email: "sentd94@gmail.com",
-  phone: "+49 1575 911 9123",
+  firstName: "maxim",
+  lastName: "sessler",
+  email: "maxim@pyroscript.de",
+  phone: "+49 151 72 7777",
   dateOfBirth: DateTime(1994, 12, 25),
   address: Address(
-    street: "Karl-Marx-Str. 1",
-    city: "Berlin",
-    zip: "12043",
+    street: "Am Bischofskreuz 5",
+    city: "Freiburg",
+    zip: "79114",
   ),
   profileDescription:
-      "A versatile and dedicated professional with a diverse range of experience in logistics, app development education and app development. ",
+      "A versatile and dedicated professional with a diverse range of experience in paragliding, app development education and app development. ",
   maritalStatus: MaritalStatus.single,
   nationality: Nationality.german,
 );

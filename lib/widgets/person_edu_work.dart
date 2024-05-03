@@ -213,15 +213,19 @@ class PersonEducationWork extends StatelessWidget {
             ),
           ),
         ),
-        SelectionArea(
+
+
+ SelectionArea(
           child: Text(
-            work.company,
+            "${work.company} | ${work.jobTitle}",
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge!
                 .copyWith(fontWeight: FontWeight.w800),
           ),
         ),
+      
+       
         SelectionArea(
           child: Text(
             work.description,

@@ -88,7 +88,7 @@ class PersonalImageAndName extends StatelessWidget {
           child: CircleAvatar(
             radius: 120,
             backgroundColor: Theme.of(context).colorScheme.tertiary,
-            backgroundImage: AssetImage('assets/images/profile_picture.jpeg'),
+            backgroundImage: AssetImage('assets/images/maxim.jpg'),
           ),
         ),
         const SizedBox(
