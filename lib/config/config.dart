@@ -1,4 +1,5 @@
 import 'package:cv_template/domain/education_entry.dart';
+import 'package:cv_template/domain/hobby_entry.dart';
 import 'package:cv_template/domain/language_entry.dart';
 import 'package:cv_template/domain/personal_data.dart';
 import 'package:cv_template/domain/skill_entry.dart';
@@ -55,6 +56,24 @@ final languages = [
     name: "French",
     skillLevel: "B1",
     rating: 3,
+  ),
+];
+final hobbys = [
+  const HobbyEntry(
+    name:'guitar', 
+    imagePath: "assets/images/icons/guitar.png",
+  ),
+    const HobbyEntry(
+    name:'paragliding', 
+    imagePath: "assets/images/icons/para.png",
+  ),
+  const HobbyEntry(
+    name:'skiing', 
+    imagePath: "assets/images/icons/ski.png",
+  ),
+    const HobbyEntry(
+    name:'classic', 
+    imagePath: "assets/images/icons/wow.png",
   ),
 ];
 
