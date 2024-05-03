@@ -87,6 +87,11 @@ final darkTheme = FlexThemeData.dark(
       fontWeight: FontWeight.w500,
       color: const Color(0xffff9500),
     ),
+    labelSmall: GoogleFonts.inter(
+      fontSize: 16,
+      fontWeight: FontWeight.w800,
+      color: const Color(0xffffefd9),
+    ),
   ),
   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
   blendLevel: 13,
