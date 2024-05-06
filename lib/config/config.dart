@@ -80,11 +80,11 @@ final hobbys = [
 final skills = [
   const SkillEntry(
     name: "Flutter",
-    rating: 4,
+    rating: 3,
   ),
   const SkillEntry(
     name: "Dart",
-    rating: 4,
+    rating: 3,
   ),
   const SkillEntry(
     name: "Stochastics",
@@ -177,7 +177,7 @@ final personalData = PersonalData(
     zip: "79114",
   ),
   profileDescription:
-      "A versatile and dedicated professional with a diverse range of experience in paragliding, app development education and app development. ",
+      "A versatile and dedicated professional with a diverse range of experience in paragliding, software development, mathematics and app development. ",
   maritalStatus: MaritalStatus.single,
   nationality: Nationality.german,
 );

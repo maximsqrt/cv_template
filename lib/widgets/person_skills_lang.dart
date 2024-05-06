@@ -1,6 +1,7 @@
 import 'package:cv_template/config/config.dart';
 import 'package:cv_template/domain/hobby_entry.dart';
 import 'package:cv_template/screens/main_screen.dart';
+import 'package:cv_template/screens/pdf.dart';
 import 'package:cv_template/widgets/footer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,41 @@ class PersonSkillsLang extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+              Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Theme.of(context).colorScheme.secondaryContainer,
+          ),
+          width: 280,
+          padding: EdgeInsets.fromLTRB(28, 34, 28, 34),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.work,
+                size: 40,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              SelectionArea(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyPDFViewer()),
+                    );
+                  },
+                  child: Text(
+                    selectionColor: Theme.of(context).colorScheme.secondary,
+                    "My Project",
+                    style: Theme.of(context).textTheme.titleSmall,
+                    // Importiere die Datei, in der MyPDFViewer definiert ist
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height:20),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
@@ -48,7 +84,7 @@ class PersonSkillsLang extends StatelessWidget {
           height: 40,
         ),
         Container(
-          height: 600,
+          height: 1000,
           child: ListView.builder(
             itemCount: skills.length,
             itemBuilder: ((context, index) {
@@ -193,7 +229,6 @@ class PersonSkillsLang extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 10),
-                        
                       ],
                     );
                   }),
@@ -202,85 +237,12 @@ class PersonSkillsLang extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Theme.of(context).colorScheme.secondaryContainer,
-          ),
-          width: 280,
-          padding: EdgeInsets.fromLTRB(28, 34, 28, 34),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Icon(
-                Icons.code,
-                size: 40,
-                color: Theme.of(context).colorScheme.tertiary,
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              SelectionArea(
-                child: Text(
-                  selectionColor: Theme.of(context).colorScheme.secondary,
-                  "My Skills",
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              ),
-            ],
-          ),
-        ),
+  
         SizedBox(
           height: 10,
         ),
         Container(
           height: 600,
-          child: ListView.builder(
-            itemCount: skills.length,
-            itemBuilder: ((context, index) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset("assets/svg/flutter.svg"),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      SelectionArea(
-                        child: Text(
-                          skills[index].name,
-                          selectionColor:
-                              Theme.of(context).colorScheme.secondary,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 33),
-                  SliderTheme(
-                    data: SliderThemeData(
-                      overlayShape: SliderComponentShape.noThumb,
-                      thumbShape:
-                          const RoundSliderThumbShape(enabledThumbRadius: 0),
-                      trackHeight: 6,
-                      activeTrackColor: Color(0xfff2f2fA),
-                      inactiveTrackColor: Color.fromRGBO(114, 120, 208, 0.4),
-                    ),
-                    child: Slider(
-                      value: skills[index].rating.toDouble(),
-                      min: 0,
-                      max: 5,
-                      label: skills[index].rating.toString(),
-                      onChanged: (double value) {},
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                ],
-              );
-            }),
-          ),
         ),
         Footer(),
       ],

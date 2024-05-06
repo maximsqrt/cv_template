@@ -9,6 +9,7 @@ environment:
 dependencies:
   # Used for the theme until Flutter fixes the theming mess.
   # For more information, see https://rydmike.com/flexcolorscheme/themesplayground-latest/
+  advance_pdf_viewer: ^2.0.1
   auto_size_text: ^3.0.0
   firebase_core: ^2.30.0
   flex_color_scheme: ^7.3.1
@@ -22,6 +23,7 @@ dependencies:
   pdf: ^3.10.8
   responsive_framework: ^1.4.0
   screenshot: ^2.3.0
+  syncfusion_flutter_pdfviewer: ^25.1.42
   syntax_highlight: ^0.4.0
   timelines: ^0.1.0
   universal_html: ^2.2.4
@@ -36,3 +38,4 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
+    - assets/AlertNuke_App.pdf
